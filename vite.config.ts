@@ -61,6 +61,9 @@ function preloadHeroArt(): Plugin {
 export default defineConfig({
   base: BASE,
   plugins: [react(), tailwindcss(), preloadHeroArt()],
+  server: {
+    port: 2503,
+  },
   build: {
     target: 'es2022',
     assetsInlineLimit: 2048,
