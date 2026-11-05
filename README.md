@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite_6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Web Audio API](https://img.shields.io/badge/Web_Audio-Live_Synthesis-5b8c5a?style=for-the-badge&logo=soundcharts&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
-[![Playwright](https://img.shields.io/badge/QA_Verified-39_Checks-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+[![Playwright](https://img.shields.io/badge/QA_Verified-44_Checks-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
 
 <br />
 
@@ -36,7 +36,7 @@
 
 ## 🌸 Overview
 
-**The Garden of Ideas** is a narrative, light-themed engineering portfolio designed as an interactive stroll through an illustrated botanical garden. 
+**The Garden of Ideas** is a narrative engineering portfolio with a light theme and a dark "Midnight Rose" theme, designed as an interactive stroll through an illustrated botanical garden. 
 
 Rather than presenting a dry grid of resume tiles, every milestone, research finding, and machine learning pipeline is framed as a waypoint along a garden path—from the **Garden Gate** to the **Moonlit Sanctuary**.
 
@@ -45,12 +45,21 @@ Rather than presenting a dry grid of resume tiles, every milestone, research fin
 - 🎵 **Generative Nature Soundscape:** 5 ambient sound channels (*Birds, Wind, Water Stream, Fountain, Night Ambience*) procedurally synthesized live in the browser using the **Web Audio API**—zero static audio asset overhead required.
 - ⚡ **Cutting-Edge Front-End:** Powered by **React 19**, **Vite**, **TypeScript (Strict)**, and **Tailwind CSS v4**.
 - 🍃 **Fluid Physics & Motion:** Momentum scrolling orchestrated with **Lenis**, natural interactive transitions driven by **Motion**, and a dynamic floating petal particle system.
-- 🛡️ **Engineered for Rigor:** Comprehensive automated test suite including **39 Playwright end-to-end interaction checks**, visual regression snapshots, and content parity validation.
+- 🛡️ **Engineered for Rigor:** Comprehensive automated test suite including **44 Playwright end-to-end interaction checks**, visual regression snapshots, and content parity validation.
+- 🌙 **Light & Dark Themes:** a theme switch in the navigation blooms the new theme outward from the button; the choice is remembered and applied before first paint (no flash). Dark is a rose-pink "Midnight Rose" night garden.
 - ♿ **Accessible by Design:** Full keyboard traversal, focus trapping, screen-reader friendly semantic landmarks, skip links, and automated compliance with `prefers-reduced-motion`.
 
 <br />
 
 ---
+
+## 🌙 Themes
+
+The sun/moon switch in the nav toggles between light (default) and dark. The choice is saved in `localStorage` (`garden-theme`).
+
+- Tokens live in `src/index.css`: the light palette in `@theme`, the dark palette in the `html[data-theme='dark']` block. Dark re-maps each scale by role (blush = backgrounds, parchment = cards, bark = text, moss = the accent, now rose-pink), so components need no per-theme code.
+- Non-colour values (glass, shadows, hero washes, artwork grading) are CSS variables in the same two blocks. For one-offs use the `dark:` variant.
+- Scene artwork is graded into a dusk-rose night in dark mode via `--art-filter`.
 
 ## 🗺️ The Journey: Garden Waypoints
 
@@ -149,7 +158,7 @@ Open **[http://localhost:2503](http://localhost:2503)** in your browser to enter
 | `npm run lint` | Runs ESLint across all TypeScript and React component trees. |
 | `npm run typecheck` | Strict TypeScript compiler validation without emitting files. |
 | `npm run format` | Prettier code style formatting with Tailwind CSS class sorting. |
-| `npm run qa:interactions` | Runs all 39 Playwright end-to-end interaction tests. |
+| `npm run qa:interactions` | Runs all 44 Playwright end-to-end interaction tests. |
 | `npm run qa:parity` | Ensures all historical credentials and data points are present without placeholders. |
 | `npm run qa:screens` | Automatically captures visual regression screenshots across 390px, 768px, and 1440px viewports. |
 
@@ -201,7 +210,7 @@ npm run lint && npm run typecheck
 npm run build && npm run preview
 
 # 3. In a second terminal, execute Playwright QA suites
-npm run qa:interactions   # 39 interaction assertions (modals, keys, forms, audio)
+npm run qa:interactions   # 44 interaction assertions (modals, keys, forms, audio)
 npm run qa:parity         # Content completeness verification against specs
 npm run qa:screens        # Multi-viewport responsive visual captures
 ```
