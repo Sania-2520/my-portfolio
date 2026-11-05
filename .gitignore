@@ -1,5 +1,20 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build outputs
+dist/
+dist-ssr/
+build/
+
+# Vite & tool caches
+.vite/
+.cache/
+.eslintcache
+
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,32 +22,49 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Testing & QA outputs
+qa/screenshots/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+.nyc_output/
+
+# Project-specific local reference & scratch scripts
+legacy/
+reference/
+*.tmp
+powershell.cmd
+
+# Local documentation and notes
+AUDIT.md
+DECISIONS.md
+PLAN.md
+QA.md
+
+# Operating system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
 
 # Editor directories and files
+.idea/
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/settings.json
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Env (keep .env.example)
-.env
-.env.*
-!.env.example
-
-# QA output
-qa/screenshots/
-test-results/
-playwright-report/
-
-# Local reference material (kept on disk, not published)
-legacy/
-reference/
