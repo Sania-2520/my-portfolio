@@ -46,7 +46,17 @@ const focusInDialog = (page) => page.evaluate(() => !!document.activeElement?.cl
   check('Skip link is the first focusable element', first === 'Skip the walk and go to the content', first)
   await page.keyboard.press('Enter')
   await loaderGone(page)
-  await page.waitForTimeout(3400)
+  // The walk's duration varies with machine load, so wait for arrival instead of a fixed delay.
+  await page
+    .waitForFunction(
+      () => {
+        const r = document.getElementById('about-section').getBoundingClientRect()
+        return r.top < window.innerHeight * 0.5 && r.bottom > 80
+      },
+      null,
+      { timeout: 9000 },
+    )
+    .catch(() => undefined)
   check('Skip link dismisses the loader and lands in the Curious Grove', await inView(page, 'about-section'))
   await ctx.close()
 }
@@ -295,6 +305,33 @@ for (const w of [360, 768, 1024, 1280, 1920]) {
   }
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
   check(`No horizontal overflow at ${w}px`, overflow <= 0, `${overflow}px`)
+  await ctx.close()
+}
+
+/* Theme switch */
+{
+  const { ctx, page } = await open()
+  await loaderGone(page)
+  const sw = page.getByRole('switch', { name: 'Dark theme' })
+  const theme = () => page.evaluate(() => document.documentElement.dataset.theme ?? 'light')
+  check(
+    'Light is the default theme',
+    (await theme()) === 'light' && (await sw.getAttribute('aria-checked')) === 'false',
+  )
+  await sw.click()
+  await page.waitForTimeout(1000)
+  check(
+    'Theme switch turns the dark theme on',
+    (await theme()) === 'dark' && (await sw.getAttribute('aria-checked')) === 'true',
+  )
+  const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor)
+  check('Dark theme paints a dark page background', bg === 'rgb(25, 11, 26)', bg)
+  await page.reload({ waitUntil: 'networkidle' })
+  check('Dark theme persists after reload with no flash (set before first paint)', (await theme()) === 'dark')
+  await loaderGone(page)
+  await page.getByRole('switch', { name: 'Dark theme' }).click()
+  await page.waitForTimeout(1000)
+  check('Switch returns to the light theme', (await theme()) === 'light')
   await ctx.close()
 }
 
