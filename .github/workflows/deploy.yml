@@ -1,7 +1,6 @@
 # Deploys the site to GitHub Pages on every push to main/master.
 # In the repo: Settings → Pages → Source: "GitHub Actions".
 # Optional repo variables (Settings → Secrets and variables → Actions → Variables):
-#   VITE_FORM_ENDPOINT  contact form endpoint (Formspree / Web3Forms)
 #   VITE_SITE_URL       public URL, e.g. https://<user>.github.io/<repo>
 name: Deploy to GitHub Pages
 
@@ -34,7 +33,6 @@ jobs:
         env:
           # Project sites are served from /<repo>/; user sites (<user>.github.io) use /.
           VITE_BASE: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
-          VITE_FORM_ENDPOINT: ${{ vars.VITE_FORM_ENDPOINT }}
           VITE_SITE_URL: ${{ vars.VITE_SITE_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
