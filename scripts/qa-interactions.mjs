@@ -213,29 +213,16 @@ const focusInDialog = (page) => page.evaluate(() => !!document.activeElement?.cl
   await sw.click()
   await page.keyboard.press('Escape')
 
-  // Contact form
+  // Contact
   await page.evaluate(() => window.scrollTo(0, document.getElementById('contact-section').offsetTop))
   await page.waitForTimeout(900)
-  await page.getByRole('button', { name: 'Submit Handshake Byte' }).click()
-  await page.waitForTimeout(500)
-  const invalid = await page.locator('#contact-section [aria-invalid="true"]').count()
-  check('Empty submit shows 4 inline errors', invalid === 4, String(invalid))
+  check('No contact form is rendered', (await page.locator('#contact-section form').count()) === 0)
   check(
-    'Error summary receives focus',
-    await page.evaluate(() => document.activeElement?.getAttribute('role') === 'alert'),
-  )
-  await page.getByLabel(/Your Full Name/).fill('Garden Visitor')
-  await page.getByLabel(/Email Address/).fill('visitor@example.org')
-  await page.getByLabel(/Inquiry Topic Vector/).fill('Collaboration')
-  await page
-    .getByLabel(/Payload message bytes/)
-    .fill('Hello Sania, I would love to collaborate on unlearning research.')
-  await page.getByRole('button', { name: 'Submit Handshake Byte' }).click()
-  await page.waitForTimeout(2200)
-  check(
-    'Valid submit runs all 4 steps (mailto fallback)',
-    (await page.getByText(/Pipeline transmission SUCCESS/).count()) === 1 &&
-      (await page.getByText(/email app should open/).count()) === 1,
+    'Contact links present (mailto, tel, GitHub, resume)',
+    (await page.locator('#contact-section a[href^="mailto:"]').count()) >= 1 &&
+      (await page.locator('#contact-section a[href^="tel:"]').count()) === 1 &&
+      (await page.locator('#contact-section a[href*="github.com"]').count()) === 1 &&
+      (await page.locator('#contact-section a[href$="sania_resume.pdf"]').count()) === 1,
   )
 
   // Resume

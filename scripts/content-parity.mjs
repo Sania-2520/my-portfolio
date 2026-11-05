@@ -50,6 +50,15 @@ const INTENTIONAL = new Map([
   ],
   ['Open the bloom', 'kept'],
   ['All', 'kept (filter)'],
+  ['Transmit Metadata Bytes', 'Contact form removed at the owner request'],
+  ['Your Full Name', 'Contact form removed'],
+  ['Inquiry Topic Vector', 'Contact form removed'],
+  ['Payload message bytes', 'Contact form removed'],
+  ['Submit Handshake Byte', 'Contact form removed'],
+  ['[1/4] Packaging payload matrices & running verification filters...', 'Contact form removed'],
+  ['[2/4] Instantiating secure handshakes over cloud gateways...', 'Contact form removed'],
+  ['[3/4] Uploading message content packets...', 'Contact form removed'],
+  ['[4/4] Pipeline transmission SUCCESS! Sania notified.', 'Contact form removed'],
 ])
 
 // 2. Rendered text of the new site, including every project and blog dialog.
