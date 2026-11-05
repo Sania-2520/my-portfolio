@@ -10,6 +10,18 @@
     />
     <meta name="theme-color" content="#FCE9E4" />
     <meta name="color-scheme" content="light" />
+    <script>
+      /* Apply the saved theme before first paint (no flash). Light is the default. */
+      try {
+        if (localStorage.getItem('garden-theme') === 'dark') {
+          var d = document.documentElement
+          d.dataset.theme = 'dark'
+          d.style.colorScheme = 'dark'
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#190B1A')
+          document.querySelector('meta[name="color-scheme"]').setAttribute('content', 'dark')
+        }
+      } catch (e) {}
+    </script>
     <link rel="canonical" href="%VITE_SITE_URL%/" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
@@ -18,12 +30,18 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sania S Kotharkar · The Garden of Ideas" />
-    <meta property="og:description" content="A journey through my world of engineering, ideas and innovation." />
+    <meta
+      property="og:description"
+      content="A journey through my world of engineering, ideas and innovation."
+    />
     <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
     <meta property="og:url" content="%VITE_SITE_URL%/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Sania S Kotharkar · The Garden of Ideas" />
-    <meta name="twitter:description" content="A journey through my world of engineering, ideas and innovation." />
+    <meta
+      name="twitter:description"
+      content="A journey through my world of engineering, ideas and innovation."
+    />
     <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.jpg" />
 
     <script type="application/ld+json">
@@ -34,40 +52,183 @@
         "jobTitle": "AI/ML Engineer",
         "email": "mailto:sania.kotharkar@gmail.com",
         "worksFor": { "@type": "Organization", "name": "Mantexia Solutions" },
-        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sahyadri College of Engineering and Management" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Adyar", "addressRegion": "Karnataka", "addressCountry": "IN" },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Sahyadri College of Engineering and Management"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Adyar",
+          "addressRegion": "Karnataka",
+          "addressCountry": "IN"
+        },
         "sameAs": ["https://github.com/saniakotharkar"]
       }
     </script>
   </head>
   <body>
-    <noscript><style>#boot-loader,#boot-hero,#boot-copy{display:none}</style></noscript>
+    <noscript
+      ><style>
+        #boot-loader,
+        #boot-hero,
+        #boot-copy {
+          display: none;
+        }
+      </style></noscript
+    >
     <noscript>
-      <div style="padding:2rem;font-family:Georgia,serif;background:#FFF6F3;color:#3B2417;max-width:640px;margin:2rem auto;border-radius:16px;border:1px solid #e9d6c4">
-        <h1 style="margin-top:0">Sania S Kotharkar · AI/ML Engineer</h1>
-        <p>This garden needs JavaScript to bloom. You can still reach Sania at
+      <div
+        style="
+          padding: 2rem;
+          font-family: Georgia, serif;
+          background: #fff6f3;
+          color: #3b2417;
+          max-width: 640px;
+          margin: 2rem auto;
+          border-radius: 16px;
+          border: 1px solid #e9d6c4;
+        "
+      >
+        <h1 style="margin-top: 0">Sania S Kotharkar · AI/ML Engineer</h1>
+        <p>
+          This garden needs JavaScript to bloom. You can still reach Sania at
           <a href="mailto:sania.kotharkar@gmail.com">sania.kotharkar@gmail.com</a> or read the
-          <a href="/sania_resume.pdf">resume (PDF)</a>.</p>
+          <a href="/sania_resume.pdf">resume (PDF)</a>.
+        </p>
       </div>
     </noscript>
     <!-- Static first paint: replaced by the React loader as soon as JavaScript runs. -->
     <style>
-      html,body{margin:0;background:#fff6f3}
-      #boot-loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#fff6f3;
-        background-image:radial-gradient(40rem 26rem at 8% 12%,rgb(248 213 208/.55),transparent 70%),radial-gradient(34rem 24rem at 92% 30%,rgb(230 236 217/.7),transparent 70%);
-        font-family:'Fraunces Variable',Georgia,serif;color:#3b2417;text-align:center}
-      #boot-loader p{margin:.5rem 0 0;font-size:1.875rem;font-style:italic}
-      #boot-loader .bar{margin:1.5rem auto 0;width:14rem;height:.5rem;border-radius:99px;border:1px solid rgb(62 90 43/.2);background:rgb(255 255 255/.7);overflow:hidden}
-      #boot-loader .bar i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(.08);background:linear-gradient(90deg,#3e5a2b,#6a8a4a);border-radius:99px;animation:boot 1.2s cubic-bezier(.22,1,.36,1) forwards}
-      @keyframes boot{to{transform:scaleX(.6)}}
-      #boot-hero{position:fixed;inset:0;z-index:99}
-      #boot-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-      @media (max-aspect-ratio:1){#boot-hero img{object-position:45% 50%}}
-      #boot-copy{position:fixed;z-index:99;left:0;right:0;bottom:12svh;padding:0 1.25rem;text-align:center;font-family:'Fraunces Variable',Georgia,serif;color:#5a3825}
-      #boot-copy h2{margin:0;font-weight:400;line-height:.95;letter-spacing:-.02em;font-size:clamp(3.1rem,1.6rem + 6.2vw,7rem)}
-      #boot-copy p{margin:1.25rem auto 0;max-width:28rem;font-family:system-ui,sans-serif;font-size:1.05rem}
-      @media (min-width:1024px){#boot-copy{left:auto;right:max(3rem,6vw);bottom:auto;top:calc(15vh + 4rem);width:min(40rem,42vw);padding:0}}
-      @media (min-width:640px){#boot-loader p{font-size:2.25rem}#boot-loader .bar{width:16rem}}
+      html,
+      body {
+        margin: 0;
+        background: #fff6f3;
+      }
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: #fff6f3;
+        background-image:
+          radial-gradient(40rem 26rem at 8% 12%, rgb(248 213 208/0.55), transparent 70%),
+          radial-gradient(34rem 24rem at 92% 30%, rgb(230 236 217/0.7), transparent 70%);
+        font-family: 'Fraunces Variable', Georgia, serif;
+        color: #3b2417;
+        text-align: center;
+      }
+      #boot-loader p {
+        margin: 0.5rem 0 0;
+        font-size: 1.875rem;
+        font-style: italic;
+      }
+      #boot-loader .bar {
+        margin: 1.5rem auto 0;
+        width: 14rem;
+        height: 0.5rem;
+        border-radius: 99px;
+        border: 1px solid rgb(62 90 43/0.2);
+        background: rgb(255 255 255/0.7);
+        overflow: hidden;
+      }
+      #boot-loader .bar i {
+        display: block;
+        height: 100%;
+        width: 100%;
+        transform-origin: left;
+        transform: scaleX(0.08);
+        background: linear-gradient(90deg, #3e5a2b, #6a8a4a);
+        border-radius: 99px;
+        animation: boot 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      @keyframes boot {
+        to {
+          transform: scaleX(0.6);
+        }
+      }
+      #boot-hero {
+        position: fixed;
+        inset: 0;
+        z-index: 99;
+      }
+      #boot-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+      @media (max-aspect-ratio: 1) {
+        #boot-hero img {
+          object-position: 45% 50%;
+        }
+      }
+      #boot-copy {
+        position: fixed;
+        z-index: 99;
+        left: 0;
+        right: 0;
+        bottom: 12svh;
+        padding: 0 1.25rem;
+        text-align: center;
+        font-family: 'Fraunces Variable', Georgia, serif;
+        color: #5a3825;
+      }
+      #boot-copy h2 {
+        margin: 0;
+        font-weight: 400;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        font-size: clamp(3.1rem, 1.6rem + 6.2vw, 7rem);
+      }
+      #boot-copy p {
+        margin: 1.25rem auto 0;
+        max-width: 28rem;
+        font-family: system-ui, sans-serif;
+        font-size: 1.05rem;
+      }
+      @media (min-width: 1024px) {
+        #boot-copy {
+          left: auto;
+          right: max(3rem, 6vw);
+          bottom: auto;
+          top: calc(15vh + 4rem);
+          width: min(40rem, 42vw);
+          padding: 0;
+        }
+      }
+      @media (min-width: 640px) {
+        #boot-loader p {
+          font-size: 2.25rem;
+        }
+        #boot-loader .bar {
+          width: 16rem;
+        }
+      }
+      html[data-theme='dark'],
+      html[data-theme='dark'] body {
+        background: #190b1a;
+      }
+      html[data-theme='dark'] #boot-loader {
+        background-color: #190b1a;
+        color: #ffedf4;
+        background-image:
+          radial-gradient(40rem 26rem at 8% 12%, rgb(255 95 162/0.18), transparent 70%),
+          radial-gradient(34rem 24rem at 92% 30%, rgb(150 70 190/0.22), transparent 70%);
+      }
+      html[data-theme='dark'] #boot-loader .bar {
+        border-color: rgb(255 160 205/0.25);
+        background: rgb(255 255 255/0.08);
+      }
+      html[data-theme='dark'] #boot-loader .bar i {
+        background: linear-gradient(90deg, #ff5fa5, #ffb3d1);
+      }
+      html[data-theme='dark'] #boot-copy {
+        color: #ffd7e7;
+      }
+      html[data-theme='dark'] #boot-hero img {
+        filter: brightness(0.74) saturate(1.1) contrast(1.06) hue-rotate(-6deg);
+      }
     </style>
     <div id="boot-copy" aria-hidden="true">
       <h2><i>The</i> Garden<br /><i>of</i> Ideas</h2>
