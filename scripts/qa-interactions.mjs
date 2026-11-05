@@ -13,7 +13,11 @@ const check = (name, ok, detail = '') => {
   results.push({ name, ok: !!ok, detail })
   console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? `  (${detail})` : ''}`)
 }
-const browser = await chromium.launch({ executablePath: process.env.PW_CHROMIUM || undefined })
+// Keep classic scrollbars (as on Windows/Linux desktops) so width checks are realistic.
+const browser = await chromium.launch({
+  executablePath: process.env.PW_CHROMIUM || undefined,
+  ignoreDefaultArgs: ['--hide-scrollbars'],
+})
 
 async function open(viewport = { width: 1440, height: 900 }, opts = {}) {
   const ctx = await browser.newContext({ viewport, ...opts })
@@ -332,6 +336,47 @@ for (const w of [360, 768, 1024, 1280, 1920]) {
   await page.getByRole('switch', { name: 'Dark theme' }).click()
   await page.waitForTimeout(1000)
   check('Switch returns to the light theme', (await theme()) === 'light')
+  await ctx.close()
+}
+
+/* Every width: the header controls and the sound popover must stay fully on screen */
+for (const w of [
+  280, 320, 360, 375, 390, 414, 600, 768, 820, 1024, 1280, 1343, 1366, 1440, 1600, 1920, 2560,
+]) {
+  const phone = w < 700
+  const { ctx, page } = await open({ width: w, height: 760 }, phone ? { isMobile: true, hasTouch: true } : {})
+  await loaderGone(page)
+  const fit = await page.evaluate(() => {
+    const vw = document.documentElement.clientWidth
+    const els = [...document.querySelectorAll('header nav button, header nav a')].filter(
+      (e) => e.getBoundingClientRect().width > 0,
+    )
+    const rs = els.map((e) => e.getBoundingClientRect())
+    const inside = rs.every((r) => r.left >= 0 && r.right <= vw)
+    let overlap = false
+    for (let i = 0; i < rs.length; i++)
+      for (let j = i + 1; j < rs.length; j++)
+        if (rs[i].left < rs[j].right - 1 && rs[j].left < rs[i].right - 1) overlap = true
+    return { inside, overlap, menu: rs.some((r) => r.right > vw - 4) }
+  })
+  check(
+    `Header controls fit on screen at ${w}px`,
+    fit.inside && !fit.overlap && !fit.menu,
+    JSON.stringify(fit),
+  )
+  await page.getByRole('button', { name: /Nature sounds/ }).click()
+  await page.waitForTimeout(600)
+  const panel = await page.evaluate(() => {
+    const r = document.getElementById('sound-panel')?.getBoundingClientRect()
+    return r
+      ? { l: Math.round(r.left), r: Math.round(r.right), vw: document.documentElement.clientWidth }
+      : null
+  })
+  check(
+    `Sound panel is fully visible at ${w}px`,
+    panel && panel.l >= 0 && panel.r <= panel.vw,
+    JSON.stringify(panel),
+  )
   await ctx.close()
 }
 
