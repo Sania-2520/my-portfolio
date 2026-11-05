@@ -40,10 +40,10 @@ export function GardenSection({
     >
       <div aria-hidden className="watercolor-bg pointer-events-none absolute inset-0 -z-10 opacity-80" />
       {(vines === 'left' || vines === 'both') && (
-        <VineCorner className="pointer-events-none absolute top-0 left-0 -z-10 w-44 opacity-70 sm:w-64 lg:w-80" />
+        <VineCorner className="pointer-events-none absolute top-0 left-0 -z-10 w-24 opacity-70 min-[22rem]:w-32 min-[26rem]:w-44 sm:w-64 lg:w-80" />
       )}
       {(vines === 'right' || vines === 'both') && (
-        <VineCorner className="pointer-events-none absolute top-0 right-0 -z-10 w-44 -scale-x-100 opacity-70 sm:w-64 lg:w-80" />
+        <VineCorner className="pointer-events-none absolute top-0 right-0 -z-10 w-24 -scale-x-100 opacity-70 min-[22rem]:w-32 min-[26rem]:w-44 sm:w-64 lg:w-80" />
       )}
       {children}
       {grass && (

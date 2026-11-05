@@ -59,7 +59,7 @@
   --shadow-bloom: 0 2px 4px rgb(91 56 37 / 0.06), 0 24px 48px -16px rgb(91 56 37 / 0.28);
   --shadow-glow: 0 0 0 1px rgb(217 180 94 / 0.35), 0 12px 40px -10px rgb(217 180 94 / 0.55);
 
-  --breakpoint-nav: 80rem; /* 1280px: full desktop nav */
+  --breakpoint-nav: 80rem; /* 1280px: full desktop nav (the Garden Map button is icon-only until 1440px) */
   --breakpoint-xs: 25rem;
 
   --animate-flicker: flicker 3.2s ease-in-out infinite;

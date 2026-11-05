@@ -87,15 +87,18 @@ export function Modal({
         )}
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <button
-          ref={closeRef}
-          type="button"
-          onClick={onClose}
-          aria-label={closeLabel}
-          className="border-bark-500/25 bg-parchment-50/90 text-bark-900 sticky top-3 right-3 z-20 float-right m-3 grid size-11 place-items-center rounded-full border backdrop-blur hover:bg-white"
-        >
-          <X className="size-5" aria-hidden />
-        </button>
+        {/* Zero-height sticky row: the button stays reachable while scrolling without narrowing the content beside it. */}
+        <div className="pointer-events-none sticky top-0 z-20 flex h-0 justify-end pr-3">
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label={closeLabel}
+            className="border-bark-500/25 bg-parchment-50/90 text-bark-900 pointer-events-auto mt-3 grid size-11 place-items-center rounded-full border backdrop-blur hover:bg-white"
+          >
+            <X className="size-5" aria-hidden />
+          </button>
+        </div>
         {children}
       </m.div>
     </m.div>,

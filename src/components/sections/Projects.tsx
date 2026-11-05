@@ -87,7 +87,7 @@ export function Projects() {
           <div
             role="group"
             aria-label="Filter projects by category"
-            className="border-line bg-parchment-50/80 flex flex-wrap justify-center gap-2 rounded-full border p-1.5"
+            className="border-line bg-parchment-50/80 flex max-w-full flex-wrap justify-center gap-1 rounded-full border p-1.5 min-[26rem]:gap-2"
           >
             {projectFilters.map((f) => {
               const on = cat === f.id
@@ -101,7 +101,7 @@ export function Projects() {
                     setIndex(0)
                   }}
                   className={cn(
-                    'relative min-h-10 rounded-full px-4 text-sm font-semibold transition-colors',
+                    'relative min-h-10 rounded-full px-3 text-sm font-semibold transition-colors min-[26rem]:px-4',
                     on ? 'text-parchment-50' : 'text-bark-700 hover:text-moss-800',
                   )}
                 >

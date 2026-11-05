@@ -161,7 +161,7 @@ export function Hero() {
         {/* Copy */}
         <m.div
           style={{ y: textY, opacity: textOpacity }}
-          className="absolute inset-x-0 bottom-[max(5.5rem,10svh)] z-10 px-5 text-center sm:px-10 lg:inset-x-auto lg:top-[15vh] lg:right-[max(3rem,6vw)] lg:bottom-auto lg:w-[min(40rem,42vw)] lg:px-0"
+          className="absolute inset-x-0 bottom-[max(6.5rem,12svh)] z-10 px-5 text-center sm:px-10 lg:inset-x-auto lg:top-[15vh] lg:right-[max(3rem,6vw)] lg:bottom-auto lg:w-[min(40rem,42vw)] lg:px-0"
         >
           <m.p {...line(0.1)} className="eyebrow text-bark-800 mb-4 tracking-[0.5em] lg:mb-6">
             {profile.hero.eyebrow}
@@ -220,7 +220,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={show ? { opacity: 1 } : undefined}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="font-display text-bark-800 absolute bottom-4 left-1/2 z-10 flex min-h-11 -translate-x-1/2 flex-col items-center gap-1 px-4 text-sm tracking-[0.18em] italic"
+          className="font-display text-bark-800 absolute bottom-4 left-1/2 z-10 flex min-h-11 -translate-x-1/2 flex-col items-center gap-1 px-4 text-sm tracking-[0.18em] whitespace-nowrap italic"
           aria-label="Scroll to wander into the Curious Grove"
         >
           <span>{profile.hero.scrollCue}</span>

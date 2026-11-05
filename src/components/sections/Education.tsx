@@ -70,7 +70,7 @@ export function Education() {
             />
           </Reveal>
 
-          <ol ref={line} className="relative ml-5 space-y-8 sm:ml-6">
+          <ol ref={line} className="relative ml-4 space-y-8 sm:ml-6">
             {/* Vine line: draws itself as you scroll */}
             <span
               aria-hidden
@@ -84,14 +84,19 @@ export function Education() {
             {education.map((e, i) => (
               <m.li
                 key={e.title}
-                className="relative pl-10 sm:pl-12"
+                className="relative pl-7 min-[26rem]:pl-10 sm:pl-12"
                 initial={{ opacity: 0, x: 24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '0px 0px -15% 0px' }}
                 transition={{ duration: 0.7, ease: EASE, delay: i * 0.05 }}
               >
                 <BloomNode current={e.current} />
-                <article className={cn('card-parchment p-6 sm:p-7', e.current && 'ring-moss-500/30 ring-1')}>
+                <article
+                  className={cn(
+                    'card-parchment p-5 min-[26rem]:p-6 sm:p-7',
+                    e.current && 'ring-moss-500/30 ring-1',
+                  )}
+                >
                   <div className="flex flex-wrap items-center gap-2">
                     {e.badge && (
                       <span className="bg-moss-800 text-parchment-50 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.12em]">

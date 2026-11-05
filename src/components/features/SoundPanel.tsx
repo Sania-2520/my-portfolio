@@ -76,7 +76,7 @@ export default function SoundPanel({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -6, scale: 0.97, transition: { duration: 0.18 } }}
       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-      className="card-parchment absolute top-14 right-0 z-50 w-[min(20rem,calc(100vw-2rem))] origin-top-right p-5 shadow-(--shadow-bloom)"
+      className="card-parchment fixed inset-x-3 top-[calc(4.25rem+env(safe-area-inset-top))] z-50 origin-top-right p-5 shadow-(--shadow-bloom) sm:absolute sm:inset-x-auto sm:top-14 sm:right-0 sm:w-80"
       data-lenis-prevent
     >
       <div className="flex items-center justify-between gap-3">
