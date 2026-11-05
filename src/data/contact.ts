@@ -15,20 +15,6 @@ export const contact = {
     { label: 'Core Response Index', value: '< 3 Hours' },
     { label: 'Security Encryption', value: 'Enabled' },
   ],
-  formTitle: 'Transmit Metadata Bytes',
-  fields: {
-    name: 'Your Full Name',
-    email: 'Email Address',
-    subject: 'Inquiry Topic Vector',
-    message: 'Payload message bytes',
-  },
-  submit: 'Submit Handshake Byte',
-  steps: [
-    '[1/4] Packaging payload matrices & running verification filters...',
-    '[2/4] Instantiating secure handshakes over cloud gateways...',
-    '[3/4] Uploading message content packets...',
-    '[4/4] Pipeline transmission SUCCESS! Sania notified.',
-  ],
   quickTitle: 'Quick Transmissions',
 }
 

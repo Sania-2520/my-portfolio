@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { m } from 'motion/react'
-import { FileText, Globe, Mail, Phone, ShieldCheck, Timer } from 'lucide-react'
+import { Copy, FileText, Globe, Mail, Phone, ShieldCheck, Timer } from 'lucide-react'
 import { Github } from '../ui/GithubIcon'
 import { contact } from '../../data/contact'
 import { profile } from '../../data/profile'
@@ -10,7 +10,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { Reveal } from '../ui/Reveal'
 import { Vignette } from '../scenes/Vignette'
 import { Moon } from '../scenes/art/Botanicals'
-import { ContactForm } from '../features/ContactForm'
+import { Button } from '../ui/Button'
 
 function Fireflies({ count = 18 }: { count?: number }) {
   const flies = useMemo(
@@ -46,10 +46,20 @@ function Fireflies({ count = 18 }: { count?: number }) {
 
 export function Contact() {
   const meta = sectionById['contact-section']
-  const { reduced } = useGarden()
+  const { reduced, toast } = useGarden()
+  const [copied, setCopied] = useState(false)
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.email)
+      setCopied(true)
+      toast('Email address copied.')
+      window.setTimeout(() => setCopied(false), 2200)
+    } catch {
+      toast(contact.email)
+    }
+  }
 
   const rows = [
-    { Icon: Mail, label: contact.labels.email, value: contact.email, href: `mailto:${contact.email}` },
     { Icon: Phone, label: contact.labels.phone, value: contact.phone, href: contact.phoneHref },
     { Icon: Globe, label: contact.labels.location, value: contact.location },
   ]
@@ -99,9 +109,13 @@ export function Contact() {
           tone="twilight"
         />
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.3fr)] lg:gap-10">
-          <div className="space-y-6">
-            <Reveal className="hidden sm:block">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+          <Reveal className="hidden sm:block">
+            <div className="relative mx-auto max-w-[19rem] lg:max-w-[25rem]">
+              <div
+                aria-hidden
+                className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(closest-side,rgb(255_233_168/0.5),transparent_70%)]"
+              />
               <Vignette
                 name="moonlit"
                 alt="A twilight garden: a tree hung with glowing lanterns above hydrangeas and a still pond with fireflies."
@@ -111,97 +125,120 @@ export function Contact() {
                   { x: 62, y: 25, size: 34 },
                   { x: 22, y: 18, size: 18 },
                 ]}
-                className="mx-auto max-w-[17rem] lg:max-w-[19rem]"
-                sizes="300px"
+                className="w-full"
+                sizes="(min-width: 1024px) 400px, 300px"
               />
-            </Reveal>
-            <Reveal className="glass-parchment rounded-[1.5rem] p-6 shadow-(--shadow-leaf) sm:p-7">
-              <h3 className="text-xl font-medium">{contact.terminalTitle}</h3>
-              <ul className="mt-5 space-y-3">
-                {rows.map(({ Icon, label, value, href }) => (
+            </div>
+          </Reveal>
+
+          <Reveal className="glass-parchment [container-type:inline-size] rounded-[2rem] p-7 shadow-(--shadow-bloom) sm:p-10 lg:p-12">
+            <p className="text-twilight-700 font-mono text-[0.7rem] tracking-[0.22em]">
+              {contact.terminalTitle.toUpperCase()}
+            </p>
+
+            <p className="text-muted mt-6 font-mono text-[0.66rem] tracking-[0.18em]">
+              {contact.labels.email}
+            </p>
+            <a
+              href={`mailto:${contact.email}`}
+              className="font-display text-bark-900 hover:text-moss-700 mt-1 block text-[clamp(1rem,6.2cqw,2.6rem)] leading-tight [overflow-wrap:anywhere] underline decoration-[#c9b8e8] decoration-2 underline-offset-[0.28em] transition-colors hover:decoration-[#6a8a4a]"
+            >
+              {contact.email}
+            </a>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Button magnetic href={`mailto:${contact.email}`} icon={<Mail className="size-4.5" />}>
+                Send an email
+              </Button>
+              <Button
+                variant="secondary"
+                iconLeft={<Copy className="text-moss-800 size-4.5" />}
+                onClick={copyEmail}
+              >
+                {copied ? 'Copied!' : 'Copy address'}
+              </Button>
+              <Button
+                variant="secondary"
+                href={`${import.meta.env.BASE_URL}${profile.resume}`}
+                target="_blank"
+                iconLeft={<FileText className="text-moss-800 size-4.5" />}
+              >
+                View Resume
+                <span className="sr-only"> (PDF, opens in a new tab)</span>
+              </Button>
+            </div>
+
+            <ul className="mt-9 grid gap-3 sm:grid-cols-2">
+              {rows.map(({ Icon, label, value, href }) => {
+                const inner = (
+                  <>
+                    <span className="bg-twilight-100 text-twilight-700 grid size-12 shrink-0 place-items-center rounded-2xl">
+                      <Icon className="size-5" aria-hidden />
+                    </span>
+                    <span className="min-w-0">
+                      <small className="text-muted block font-mono text-[0.62rem] tracking-[0.14em]">
+                        {label}
+                      </small>
+                      <span className="text-bark-900 block font-semibold [overflow-wrap:anywhere]">
+                        {value}
+                      </span>
+                    </span>
+                  </>
+                )
+                const cls =
+                  'border-line flex items-center gap-3.5 rounded-2xl border bg-white/60 p-3.5 transition-all'
+                return (
                   <li key={label}>
-                    {(() => {
-                      const inner = (
-                        <>
-                          <span className="bg-twilight-100 text-twilight-700 grid size-11 shrink-0 place-items-center rounded-xl">
-                            <Icon className="size-5" aria-hidden />
-                          </span>
-                          <span className="min-w-0">
-                            <small className="text-muted block font-mono text-[0.66rem] tracking-[0.14em]">
-                              {label}
-                            </small>
-                            <span className="text-bark-900 block font-semibold [overflow-wrap:anywhere]">
-                              {value}
-                            </span>
-                          </span>
-                        </>
-                      )
-                      return href ? (
-                        <a
-                          href={href}
-                          className="flex items-center gap-3 rounded-2xl p-1.5 transition-colors hover:bg-white/70"
-                        >
-                          {inner}
-                        </a>
-                      ) : (
-                        <div className="flex items-center gap-3 p-1.5">{inner}</div>
-                      )
-                    })()}
+                    {href ? (
+                      <a
+                        href={href}
+                        className={`${cls} hover:-translate-y-0.5 hover:bg-white hover:shadow-md`}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className={cls}>{inner}</div>
+                    )}
                   </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex flex-wrap gap-2">
+                )
+              })}
+              <li className="sm:col-span-2">
                 <a
                   href={contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-bark-900 text-parchment-50 hover:bg-moss-800 inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-semibold"
+                  className="border-line flex items-center gap-3.5 rounded-2xl border bg-white/60 p-3.5 transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
                 >
-                  <Github className="size-4" aria-hidden /> GitHub
+                  <span className="bg-bark-900 text-parchment-50 grid size-12 shrink-0 place-items-center rounded-2xl">
+                    <Github className="size-5" aria-hidden />
+                  </span>
+                  <span className="min-w-0">
+                    <small className="text-muted block font-mono text-[0.62rem] tracking-[0.14em]">
+                      GITHUB
+                    </small>
+                    <span className="text-bark-900 block font-semibold">saniakotharkar</span>
+                  </span>
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
-                <a
-                  href={`${import.meta.env.BASE_URL}${profile.resume}`}
-                  target="_blank"
-                  className="border-bark-500/35 bg-parchment-50 text-bark-900 inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold hover:bg-white"
-                >
-                  <FileText className="text-moss-800 size-4" aria-hidden /> View Resume
-                  <span className="sr-only"> (PDF, opens in a new tab)</span>
-                </a>
-              </div>
+              </li>
+            </ul>
 
-              <div className="border-line mt-6 border-t pt-5">
-                <p className="text-muted font-mono text-[0.66rem] tracking-[0.18em]">
-                  {contact.metricsTitle}
-                </p>
-                <div className="mt-3 grid grid-cols-2 gap-3">
-                  {contact.metrics.map((m, i) => (
-                    <div key={m.label} className="border-line rounded-2xl border bg-white/65 p-4">
-                      {i === 0 ? (
-                        <Timer className="text-twilight-700 size-5" aria-hidden />
-                      ) : (
-                        <ShieldCheck className="text-moss-700 size-5" aria-hidden />
-                      )}
-                      <p className="font-display text-bark-900 mt-2 text-xl">{m.value}</p>
-                      <p className="text-muted text-xs">{m.label}</p>
-                    </div>
-                  ))}
-                </div>
+            <div className="border-line mt-8 border-t pt-6">
+              <p className="text-muted font-mono text-[0.66rem] tracking-[0.18em]">{contact.metricsTitle}</p>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {contact.metrics.map((m, i) => (
+                  <div key={m.label} className="border-line rounded-2xl border bg-white/65 p-4">
+                    {i === 0 ? (
+                      <Timer className="text-twilight-700 size-5" aria-hidden />
+                    ) : (
+                      <ShieldCheck className="text-moss-700 size-5" aria-hidden />
+                    )}
+                    <p className="font-display text-bark-900 mt-2 text-xl">{m.value}</p>
+                    <p className="text-muted text-xs">{m.label}</p>
+                  </div>
+                ))}
               </div>
-            </Reveal>
-          </div>
-
-          <Reveal
-            delay={0.08}
-            className="glass-parchment rounded-[1.5rem] p-6 shadow-(--shadow-bloom) sm:p-9"
-          >
-            <h3 className="mb-6 flex items-center gap-2.5 text-2xl font-medium">
-              <span className="bg-moss-800 text-parchment-50 grid size-10 place-items-center rounded-full">
-                <Mail className="size-5" aria-hidden />
-              </span>
-              {contact.formTitle}
-            </h3>
-            <ContactForm />
+            </div>
           </Reveal>
         </div>
       </div>
