@@ -8,6 +8,7 @@ import { useSound } from '../../hooks/useSound'
 import { cn } from '../../lib/cn'
 import { BrandLeaf } from './Brand'
 import { MobileMenu } from './MobileMenu'
+import { ThemeToggle } from './ThemeToggle'
 
 const SoundPanel = lazy(() => import('../features/SoundPanel'))
 
@@ -120,6 +121,7 @@ export function Nav({ active }: { active: string }) {
               )}
             </AnimatePresence>
           </div>
+          <ThemeToggle />
           <m.button
             ref={mapBtn}
             type="button"

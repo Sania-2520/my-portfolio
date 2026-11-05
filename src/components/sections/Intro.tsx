@@ -29,7 +29,7 @@ export function Intro() {
               <span className="bg-bark-600/60 h-6 w-px" />
               <span className="bg-bark-600/60 h-6 w-px" />
             </div>
-            <div className="border-bark-800/30 font-display text-bark-900 motion-safe:animate-sway rounded-lg border bg-gradient-to-b from-[#c9a27c] to-[#a97f5b] px-5 py-1.5 text-sm italic shadow-md">
+            <div className="border-bark-800/30 font-display text-sign motion-safe:animate-sway rounded-lg border bg-gradient-to-b from-[#c9a27c] to-[#a97f5b] px-5 py-1.5 text-sm italic shadow-md">
               {i.welcome}
             </div>
           </div>
@@ -71,8 +71,8 @@ export function Intro() {
                   <Flower color="#f0b9c7" className="absolute -right-3 bottom-6 size-8 drop-shadow" />
                 </div>
                 <div className="border-gold-600/30 from-gold-300 mt-7 rounded-xl border bg-gradient-to-b to-[#cfa856] px-6 py-3 shadow-[inset_0_1px_0_rgb(255_255_255/0.5),0_6px_16px_-8px_rgb(91_56_37/0.5)]">
-                  <p className="font-display text-bark-900 text-xl italic">{profile.name}</p>
-                  <p className="text-bark-800 text-[0.8rem] font-semibold">{profile.role}</p>
+                  <p className="font-display text-sign text-xl italic">{profile.name}</p>
+                  <p className="text-sign text-[0.8rem] font-semibold">{profile.role}</p>
                 </div>
                 <p className="text-muted mt-4 inline-flex items-center gap-1.5 text-sm">
                   <MapPin className="size-4 text-rose-500" aria-hidden />

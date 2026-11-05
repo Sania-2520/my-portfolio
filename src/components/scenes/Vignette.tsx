@@ -41,7 +41,7 @@ export function Vignette({
     <div ref={ref} className={cn('relative', className)} style={{ aspectRatio: `${width} / ${height}` }}>
       <m.div
         className={cn(
-          'absolute inset-0 will-change-transform',
+          'art-grade absolute inset-0 will-change-transform',
           feather === 'strong' ? 'mask-feather' : 'mask-feather-soft',
         )}
         style={{ y, scale }}

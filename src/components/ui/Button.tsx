@@ -35,11 +35,11 @@ type AsLink = Common & {
 
 const styles: Record<Variant, string> = {
   primary:
-    'bg-moss-800 text-parchment-50 shadow-[0_10px_30px_-10px_rgb(47_69_33/0.65)] hover:bg-moss-700 border border-moss-900/40',
+    'bg-moss-800 text-parchment-50 shadow-[0_10px_30px_-10px_var(--btn-shadow)] hover:bg-moss-700 border border-moss-900/40',
   secondary:
     'bg-parchment-50/85 text-bark-900 border border-bark-500/35 hover:bg-white hover:border-bark-500/60 backdrop-blur-sm',
   ghost: 'text-moss-800 hover:bg-moss-100/70 border border-transparent',
-  gold: 'bg-gold-300 text-bark-900 border border-gold-600/30 hover:bg-gold-400',
+  gold: 'bg-gold-300 text-sign border border-gold-600/30 hover:bg-gold-400',
 }
 
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, AsButton | AsLink>(

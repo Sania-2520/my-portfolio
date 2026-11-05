@@ -18,7 +18,7 @@ export function Footer() {
           onClick={() => setQuote((q) => ((q ?? -1) + 1) % devQuotes.length)}
           whileHover={{ y: -4, rotate: -0.5 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-moss-800 text-parchment-50 relative w-full max-w-xl overflow-hidden rounded-[1.75rem] px-8 py-10 shadow-(--shadow-bloom)"
+          className="bg-moss-800 text-parchment-50 relative w-full max-w-xl overflow-hidden rounded-[1.75rem] px-8 py-10 shadow-(--shadow-bloom) dark:bg-gradient-to-br dark:from-[#ff9cc6] dark:to-[#e8629f]"
           aria-describedby="dev-quote"
         >
           <span
@@ -26,7 +26,7 @@ export function Footer() {
             aria-hidden
           />
           <Butterfly color="#f0b9c7" className="motion-safe:animate-float absolute top-4 right-6 size-9" />
-          <Sprig className="text-moss-300 mx-auto mb-3 h-6 w-10" />
+          <Sprig className="text-moss-300 dark:text-parchment-100 mx-auto mb-3 h-6 w-10" />
           <span className="font-display block text-[clamp(1.6rem,1.1rem+2vw,2.4rem)] leading-tight italic">
             {footer.thanks}
           </span>

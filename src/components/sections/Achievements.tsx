@@ -48,14 +48,14 @@ export function Achievements() {
                     >
                       <span
                         aria-hidden
-                        className="group-hover:animate-shine pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-[120%] bg-gradient-to-r from-transparent via-white/70 to-transparent"
+                        className="group-hover:animate-shine pointer-events-none absolute inset-y-0 left-0 w-1/3 -translate-x-[120%] bg-gradient-to-r from-transparent via-white/70 to-transparent dark:via-rose-300/30"
                       />
                       <m.span
                         variants={{
                           rest: { rotate: 0, y: 0 },
                           hover: { rotate: [0, -10, 8, 0], y: -3, transition: { duration: 0.6 } },
                         }}
-                        className="border-gold-600/30 from-gold-300 to-gold-400 text-bark-900 grid size-14 place-items-center rounded-2xl border bg-gradient-to-b shadow-(--shadow-glow)"
+                        className="border-gold-600/30 from-gold-300 to-gold-400 text-sign grid size-14 place-items-center rounded-2xl border bg-gradient-to-b shadow-(--shadow-glow)"
                       >
                         <Icon className="size-7" aria-hidden />
                       </m.span>

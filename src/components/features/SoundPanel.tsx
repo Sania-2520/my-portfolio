@@ -28,7 +28,7 @@ function Toggle({ on, onChange, id }: { on: boolean; onChange: (v: boolean) => v
       )}
     >
       <m.span
-        className="absolute top-0.5 left-0.5 size-[1.375rem] rounded-full bg-white shadow"
+        className="absolute top-0.5 left-0.5 size-[1.375rem] rounded-full bg-[#fff6fa] shadow"
         animate={{ x: on ? 20 : 0 }}
         transition={{ type: 'spring', stiffness: 500, damping: 32 }}
       />

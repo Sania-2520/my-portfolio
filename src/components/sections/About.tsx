@@ -40,7 +40,7 @@ export function About() {
               glows={[{ x: 49, y: 30, size: 30 }]}
               sizes="(min-width: 1024px) 440px, 90vw"
             />
-            <div className="border-bark-800/20 font-display text-bark-900 absolute -bottom-4 left-1/2 w-[86%] -translate-x-1/2 rounded-2xl border bg-gradient-to-b from-[#c9a27c] to-[#ad8461] px-5 py-3 text-center text-[1.05rem] italic shadow-(--shadow-leaf)">
+            <div className="border-bark-800/20 font-display text-sign absolute -bottom-4 left-1/2 w-[86%] -translate-x-1/2 rounded-2xl border bg-gradient-to-b from-[#c9a27c] to-[#ad8461] px-5 py-3 text-center text-[1.05rem] italic shadow-(--shadow-leaf)">
               {a.signText}
             </div>
           </Reveal>

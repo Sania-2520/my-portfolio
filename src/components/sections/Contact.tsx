@@ -68,7 +68,7 @@ export function Contact() {
     <section
       id="contact-section"
       aria-labelledby="contact-section-title"
-      className="relative isolate scroll-mt-20 overflow-hidden bg-[linear-gradient(180deg,#fff6f3_0%,#f3ecf9_18%,#e7d9f2_48%,#efdbe6_78%,#f8e3da_100%)] py-20 sm:py-28 lg:py-32"
+      className="relative isolate scroll-mt-20 overflow-hidden bg-[linear-gradient(180deg,#fff6f3_0%,#f3ecf9_18%,#e7d9f2_48%,#efdbe6_78%,#f8e3da_100%)] py-20 sm:py-28 lg:py-32 dark:bg-[linear-gradient(180deg,#190b1a_0%,#2b1236_20%,#47195a_50%,#6a2166_78%,#3a1240_100%)]"
     >
       {/* Twilight sky */}
       <m.div
@@ -88,12 +88,20 @@ export function Contact() {
         preserveAspectRatio="none"
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-28 w-full"
       >
-        <path d="M0 60c180-30 360 30 540 10s360-50 540-20 270 30 360 10v80H0Z" fill="#d8c8ec" opacity=".7" />
-        <path d="M0 90c240-20 480 20 720 6s480-26 720 0v44H0Z" fill="#cdbbe6" opacity=".6" />
+        <path
+          d="M0 60c180-30 360 30 540 10s360-50 540-20 270 30 360 10v80H0Z"
+          className="fill-[#d8c8ec] dark:fill-[#7a2f78]"
+          opacity=".7"
+        />
+        <path
+          d="M0 90c240-20 480 20 720 6s480-26 720 0v44H0Z"
+          className="fill-[#cdbbe6] dark:fill-[#5d2260]"
+          opacity=".6"
+        />
         <path
           d="M200 100h120M700 112h160M1100 104h90"
           stroke="#fff"
-          strokeOpacity=".7"
+          strokeOpacity=".5"
           strokeWidth="2"
           strokeLinecap="round"
         />
@@ -141,7 +149,7 @@ export function Contact() {
             </p>
             <a
               href={`mailto:${contact.email}`}
-              className="font-display text-bark-900 hover:text-moss-700 mt-1 block text-[clamp(1rem,6.2cqw,2.6rem)] leading-tight [overflow-wrap:anywhere] underline decoration-[#c9b8e8] decoration-2 underline-offset-[0.28em] transition-colors hover:decoration-[#6a8a4a]"
+              className="font-display text-bark-900 hover:text-moss-700 mt-1 block text-[clamp(1rem,6.2cqw,2.6rem)] leading-tight [overflow-wrap:anywhere] underline decoration-[#c9b8e8] decoration-2 underline-offset-[0.28em] transition-colors hover:decoration-[#6a8a4a] dark:decoration-[#ff8dbb]"
             >
               {contact.email}
             </a>

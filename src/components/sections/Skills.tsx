@@ -107,13 +107,13 @@ export function Skills() {
 
         <Reveal className="relative mx-auto max-w-6xl">
           {/* Glasshouse */}
-          <div className="border-moss-700/45 relative overflow-hidden rounded-t-[min(12rem,30vw)] rounded-b-[1.75rem] border-[3px] bg-[linear-gradient(180deg,rgb(236_244_240/0.85),rgb(252_244_238/0.9)_45%,rgb(251_245_233/0.95))] px-3 pt-24 pb-6 shadow-(--shadow-bloom) sm:px-8 sm:pt-32 lg:px-12">
+          <div className="border-moss-700/45 relative overflow-hidden rounded-t-[min(12rem,30vw)] rounded-b-[1.75rem] border-[3px] bg-[linear-gradient(180deg,rgb(236_244_240/0.85),rgb(252_244_238/0.9)_45%,rgb(251_245_233/0.95))] px-3 pt-24 pb-6 shadow-(--shadow-bloom) sm:px-8 sm:pt-32 lg:px-12 dark:bg-[linear-gradient(180deg,rgb(86_34_92/0.55),rgb(52_22_62/0.8)_45%,rgb(38_18_48/0.92))]">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
                 backgroundImage:
-                  'repeating-linear-gradient(90deg, transparent 0 calc(16.66% - 2px), rgb(62 90 43 / 0.16) calc(16.66% - 2px) 16.66%), linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.55) 42%, transparent 52%)',
+                  'repeating-linear-gradient(90deg, transparent 0 calc(16.66% - 2px), var(--glass-mullion) calc(16.66% - 2px) 16.66%), linear-gradient(115deg, transparent 30%, var(--glass-shine) 42%, transparent 52%)',
               }}
             />
             <div

@@ -92,6 +92,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
       }
       if (lenis && !reduced) {
         const dist = Math.abs(top - window.scrollY)
+        // The walk mounts scene by scene; refresh Lenis' scroll limit so the target is never clamped to a stale height.
+        lenis.resize()
         lenis.scrollTo(top, {
           duration: Math.min(2.4, Math.max(1.1, 1 + dist / 3200)),
           easing: (t) => 1 - Math.pow(1 - t, 4),

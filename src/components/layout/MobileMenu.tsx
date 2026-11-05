@@ -36,11 +36,7 @@ export function MobileMenu({ open, onClose, active, onNavigate }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div
-            className="bg-bark-900/30 absolute inset-0 backdrop-blur-[3px]"
-            onClick={onClose}
-            aria-hidden
-          />
+          <div className="bg-scrim absolute inset-0 backdrop-blur-[3px]" onClick={onClose} aria-hidden />
           <m.div
             ref={ref}
             id="mobile-menu"

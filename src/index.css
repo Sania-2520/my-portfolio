@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 
+/* Dark theme switch: <html data-theme="dark">. Use `dark:` for one-off overrides. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /* ------------------------------------------------------------------
-   Design tokens: light theme only (no dark mode by design)
+   Design tokens: light (default) + dark "Midnight Rose" (see the dark block below)
    ------------------------------------------------------------------ */
 @theme {
   --color-blush-50: #fff6f3;
@@ -42,6 +45,8 @@
   --color-muted: #7a5f4e; /* secondary: 5.3:1 on blush-50 */
   --color-line: #e7d3c2;
   --color-ring: #3e5a2b;
+  --color-sign: #3b2417; /* text on wooden / gold signs: dark in both themes */
+  --color-scrim: rgb(59 36 23 / 0.4);
 
   --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -121,6 +126,109 @@
   }
 }
 
+/* Theme-dependent values that are not plain colour tokens. */
+:root {
+  --btn-shadow: rgb(47 69 33 / 0.65);
+  --glass: rgb(251 245 233 / 0.78);
+  --glass-line: rgb(231 211 194 / 0.8);
+  --chip-bg: rgb(255 255 255 / 0.6);
+  --field-bg: rgb(255 255 255 / 0.75);
+  --field-bg-focus: #fff;
+  --field-placeholder: #9a8070;
+  --card-hi: rgb(255 255 255 / 0.65);
+  --grain-opacity: 0.35;
+  --grain-blend: multiply;
+  --glass-mullion: rgb(62 90 43 / 0.16);
+  --glass-shine: rgb(255 255 255 / 0.55);
+  --ruled-line: rgb(231 211 194 / 0.55);
+  --hero-wash-1: rgb(255 246 243 / 0.82);
+  --hero-wash-2: rgb(255 246 243 / 0.35);
+  --hero-glow-1: rgb(255 244 240 / 0.78);
+  --hero-glow-2: rgb(255 240 236 / 0.45);
+  --wc-a: rgb(248 213 208 / 0.55);
+  --wc-b: rgb(230 236 217 / 0.7);
+  --wc-c: rgb(226 216 243 / 0.45);
+  --art-filter: none;
+}
+
+/* ------------------------------------------------------------------
+   Dark theme: "Midnight Rose". Aubergine night, rose-pink light.
+   The token scales are re-mapped by role, so every utility follows:
+   blush = backgrounds, parchment = card surfaces, bark = text,
+   moss = the primary accent (now pink), twilight/lavender = violet.
+   ------------------------------------------------------------------ */
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-blush-50: #190b1a;
+  --color-blush-100: #231026;
+  --color-blush-200: #341738;
+  --color-blush-300: #4d2352;
+  --color-rose-300: #ffb3d1;
+  --color-rose-400: #ff8dbb;
+  --color-rose-500: #ff5fa5;
+  --color-rose-700: #ff9ec0;
+  --color-moss-100: #3a1a3e;
+  --color-moss-300: #a24c86;
+  --color-moss-500: #ff7cb4;
+  --color-moss-700: #ffa0c8;
+  --color-moss-800: #ff8dbb;
+  --color-moss-900: #ffb6d4;
+  --color-bark-500: #b97c9f;
+  --color-bark-600: #e3a3c1;
+  --color-bark-700: #f4c0d7;
+  --color-bark-800: #ffd7e7;
+  --color-bark-900: #ffedf4;
+  --color-parchment-50: #2b1331;
+  --color-parchment-100: #381b3f;
+  --color-parchment-200: #4a2552;
+  --color-gold-300: #f4d89c;
+  --color-gold-400: #e7c176;
+  --color-gold-600: #f1cf88;
+  --color-lavender-200: #4b2e68;
+  --color-lavender-300: #9c7acb;
+  --color-lavender-500: #c6a4f6;
+  --color-twilight-100: #3c2249;
+  --color-twilight-200: #4f2d66;
+  --color-twilight-700: #ecccff;
+  --color-white: #432049;
+
+  --color-ink: #ffedf4;
+  --color-body: #ecd3e1;
+  --color-muted: #c9a2ba;
+  --color-line: #512c58;
+  --color-ring: #ffa8cd;
+  --color-sign: #3b2417;
+  --color-scrim: rgb(12 3 16 / 0.68);
+
+  --shadow-leaf: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -10px rgb(0 0 0 / 0.65);
+  --shadow-bloom:
+    0 2px 4px rgb(0 0 0 / 0.35), 0 28px 60px -22px rgb(255 95 162 / 0.28), 0 24px 48px -20px rgb(0 0 0 / 0.7);
+  --shadow-glow: 0 0 0 1px rgb(244 216 156 / 0.4), 0 12px 40px -10px rgb(244 216 156 / 0.45);
+
+  --btn-shadow: rgb(255 95 162 / 0.55);
+  --glass: rgb(43 19 49 / 0.72);
+  --glass-line: rgb(255 160 205 / 0.16);
+  --chip-bg: rgb(255 255 255 / 0.06);
+  --field-bg: rgb(255 255 255 / 0.05);
+  --field-bg-focus: rgb(255 255 255 / 0.09);
+  --field-placeholder: #a97f99;
+  --card-hi: rgb(255 140 200 / 0.1);
+  --grain-opacity: 0.18;
+  --grain-blend: screen;
+  --glass-mullion: rgb(255 160 205 / 0.14);
+  --glass-shine: rgb(255 190 225 / 0.14);
+  --ruled-line: rgb(255 160 205 / 0.1);
+  --hero-wash-1: rgb(25 11 26 / 0.8);
+  --hero-wash-2: rgb(25 11 26 / 0.3);
+  --hero-glow-1: rgb(25 11 26 / 0.62);
+  --hero-glow-2: rgb(25 11 26 / 0.34);
+  --wc-a: rgb(255 95 162 / 0.16);
+  --wc-b: rgb(150 70 190 / 0.2);
+  --wc-c: rgb(255 140 200 / 0.12);
+  --art-filter: brightness(0.74) saturate(1.1) contrast(1.06) hue-rotate(-6deg);
+}
+
 /* ------------------------------------------------------------------
    Base
    ------------------------------------------------------------------ */
@@ -171,6 +279,10 @@
   ::selection {
     background: var(--color-rose-300);
     color: var(--color-bark-900);
+  }
+  html[data-theme='dark'] ::selection {
+    background: rgb(255 125 180 / 0.45);
+    color: #fff;
   }
   :focus-visible {
     outline: 3px solid var(--color-ring);
@@ -227,7 +339,7 @@
   .card-parchment {
     position: relative;
     background:
-      radial-gradient(120% 80% at 0% 0%, rgb(255 255 255 / 0.65), transparent 60%), var(--color-parchment-50);
+      radial-gradient(120% 80% at 0% 0%, var(--card-hi), transparent 60%), var(--color-parchment-50);
     border: 1px solid var(--color-line);
     border-radius: 1.25rem;
     box-shadow: var(--shadow-leaf);
@@ -240,17 +352,17 @@
     border-radius: inherit;
     background-image: var(--paper-grain);
     background-size: 180px;
-    opacity: 0.35;
-    mix-blend-mode: multiply;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
     pointer-events: none;
     z-index: -1;
   }
 
   .glass-parchment {
-    background: rgb(251 245 233 / 0.78);
+    background: var(--glass);
     backdrop-filter: blur(14px) saturate(1.2);
     -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    border: 1px solid rgb(231 211 194 / 0.8);
+    border: 1px solid var(--glass-line);
   }
 
   .chip {
@@ -263,7 +375,7 @@
     font-weight: 600;
     line-height: 1.4;
     border: 1px solid var(--color-line);
-    background: rgb(255 255 255 / 0.6);
+    background: var(--chip-bg);
     color: var(--color-bark-700);
   }
 
@@ -285,9 +397,9 @@
 
   .watercolor-bg {
     background:
-      radial-gradient(40rem 26rem at 8% 12%, rgb(248 213 208 / 0.55), transparent 70%),
-      radial-gradient(34rem 24rem at 92% 30%, rgb(230 236 217 / 0.7), transparent 70%),
-      radial-gradient(30rem 22rem at 70% 95%, rgb(226 216 243 / 0.45), transparent 70%);
+      radial-gradient(40rem 26rem at 8% 12%, var(--wc-a), transparent 70%),
+      radial-gradient(34rem 24rem at 92% 30%, var(--wc-b), transparent 70%),
+      radial-gradient(30rem 22rem at 70% 95%, var(--wc-c), transparent 70%);
   }
 
   .field {
@@ -295,7 +407,7 @@
     min-height: 2.875rem;
     border-radius: 0.875rem;
     border: 1px solid var(--color-line);
-    background: rgb(255 255 255 / 0.75);
+    background: var(--field-bg);
     padding: 0.7rem 0.95rem;
     color: var(--color-bark-900);
     transition:
@@ -304,7 +416,7 @@
       background 0.2s;
   }
   .field::placeholder {
-    color: #9a8070;
+    color: var(--field-placeholder);
   }
   .field:hover {
     border-color: var(--color-bark-500);
@@ -313,7 +425,7 @@
     outline: none;
     border-color: var(--color-moss-700);
     box-shadow: 0 0 0 3px rgb(62 90 43 / 0.2);
-    background: #fff;
+    background: var(--field-bg-focus);
   }
   .field[aria-invalid='true'] {
     border-color: var(--color-rose-700);
@@ -351,12 +463,10 @@ html.reduce-motion *::after {
   transition-duration: 0.01ms !important;
 }
 
-/* Reserve the scrollbar's space on pointer devices (classic scrollbars) so locking
-   scroll for the loader and dialogs never shifts layout. Touch devices use overlay scrollbars. */
-@media (hover: hover) and (pointer: fine) {
-  html {
-    scrollbar-gutter: stable;
-  }
+/* Reserve the scrollbar's space (classic scrollbars) so locking scroll for the loader and
+   dialogs never shifts layout. Overlay scrollbars (touch devices) reserve nothing. */
+html {
+  scrollbar-gutter: stable;
 }
 
 /* Garden scrollbar: a blush parchment rail with a mossy, vine-like thumb.
@@ -453,4 +563,47 @@ html.reduce-motion *::after {
   .landscape-only {
     display: none;
   }
+}
+
+/* ------------------------------------------------------------------
+   Dark theme: artwork grading + switch animation
+   ------------------------------------------------------------------ */
+/* Daylight watercolour art becomes a dusk-rose night scene. */
+html[data-theme='dark'] .hero-stage img,
+html[data-theme='dark'] #boot-hero img,
+html[data-theme='dark'] .art-grade img {
+  filter: var(--art-filter);
+}
+html[data-theme='dark'] .hero-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 60% at 30% 40%, rgb(255 105 170 / 0.22), transparent 70%),
+    linear-gradient(180deg, rgb(70 24 100 / 0.5), rgb(150 40 120 / 0.18) 55%, rgb(25 11 26 / 0.35));
+  mix-blend-mode: soft-light;
+}
+
+/* Circular reveal from the toggle button (View Transitions API). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* Dark: wider feathering so pale paper edges in the artwork melt into the night. */
+html[data-theme='dark'] .mask-feather-soft {
+  mask-image:
+    linear-gradient(to right, transparent, #000 24%, #000 76%, transparent),
+    linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 24%, #000 76%, transparent),
+    linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
 }

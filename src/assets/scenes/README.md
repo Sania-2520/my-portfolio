@@ -15,16 +15,16 @@ src/assets/scenes/<scene>/art-<width>.webp
 
 ## Scenes and recommended sizes
 
-| Folder | Used in | Aspect ratio (current) | Recommended widths |
-|---|---|---|---|
-| `gate` | Hero background (landscape) | 1672 × 941 (≈16:9) | 828, 1280, 1672, 2400 |
-| `gate-portrait` | Hero background (phones / portrait) | 1040 × 941 | 720, 1040, 1560 |
-| `map` | Garden Map dialog | 944 × 652 | 944, 1400 |
-| `grove` | Curious Grove vignette | 400 × 556 | 400, 800 |
-| `cottage` | Gardener's Cottage vignette | 592 × 468 | 592, 1184 |
-| `desk` | Cottage Desk banner | 520 × 192 | 520, 1040 |
-| `pavilion` | Pavilion vignette | 412 × 468 | 412, 824 |
-| `moonlit` | Moonlit Garden vignette | 362 × 464 | 362, 724 |
+| Folder          | Used in                             | Aspect ratio (current) | Recommended widths    |
+| --------------- | ----------------------------------- | ---------------------- | --------------------- |
+| `gate`          | Hero background (landscape)         | 1672 × 941 (≈16:9)     | 828, 1280, 1672, 2400 |
+| `gate-portrait` | Hero background (phones / portrait) | 1040 × 941             | 720, 1040, 1560       |
+| `map`           | Garden Map dialog                   | 944 × 652              | 944, 1400             |
+| `grove`         | Curious Grove vignette              | 400 × 556              | 400, 800              |
+| `cottage`       | Gardener's Cottage vignette         | 592 × 468              | 592, 1184             |
+| `desk`          | Cottage Desk banner                 | 520 × 192              | 520, 1040             |
+| `pavilion`      | Pavilion vignette                   | 412 × 468              | 412, 824              |
+| `moonlit`       | Moonlit Garden vignette             | 362 × 464              | 362, 724              |
 
 If you change a scene's aspect ratio, update the matching `width`/`height` props where it's used (search for `name="<scene>"`). For the hero, also update the lantern glow positions (`LANTERNS` in `Hero.tsx`) and `--ar` in `src/index.css` (`.hero-stage`).
 

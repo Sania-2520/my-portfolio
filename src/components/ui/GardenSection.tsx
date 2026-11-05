@@ -14,7 +14,7 @@ interface Props {
 
 const BG: Record<NonNullable<Props['bg']>, string> = {
   blush: 'bg-blush-50',
-  meadow: 'bg-gradient-to-b from-blush-50 via-[#fbf3ec] to-blush-50',
+  meadow: 'bg-gradient-to-b from-blush-50 via-[#fbf3ec] to-blush-50 dark:via-blush-100',
   parchment: 'bg-gradient-to-b from-blush-50 via-parchment-50 to-blush-50',
   none: '',
 }

@@ -33,15 +33,15 @@ export function YamlManifest({ icon }: { icon: ReactNode }) {
     const text = line.slice(0, take)
     if (i === 0)
       return (
-        <span key={i} className="text-rose-300">
+        <span key={i} className="text-[#f0b9c7]">
           {text}
         </span>
       )
     const colon = line.indexOf(':')
     return (
       <span key={i}>
-        <span className="text-moss-300">{text.slice(0, colon + 1)}</span>
-        <span className="text-gold-300">{text.slice(colon + 1)}</span>
+        <span className="text-[#a8bb8a] dark:text-[#ffa3cb]">{text.slice(0, colon + 1)}</span>
+        <span className="text-[#ebd08e]">{text.slice(colon + 1)}</span>
       </span>
     )
   })
@@ -49,9 +49,9 @@ export function YamlManifest({ icon }: { icon: ReactNode }) {
   return (
     <div
       ref={ref}
-      className="border-bark-900/40 overflow-hidden rounded-[1.25rem] border bg-[#2c2a22] shadow-(--shadow-bloom)"
+      className="overflow-hidden rounded-[1.25rem] border border-[#ff8dbb]/0 bg-[#2c2a22] shadow-(--shadow-bloom) dark:border-[#ff8dbb]/25 dark:bg-[#1b0b22]"
     >
-      <div className="text-parchment-100/80 flex items-center justify-between border-b border-white/10 bg-[#36332a] px-4 py-2.5 font-mono text-xs">
+      <div className="flex items-center justify-between border-b border-white/10 bg-[#36332a] px-4 py-2.5 font-mono text-xs text-[#f4ead3]/80 dark:bg-[#2a1233]">
         <span className="flex items-center gap-3">
           <span className="flex gap-1.5" aria-hidden>
             <i className="size-2.5 rounded-full bg-[#e58f8f]" />
@@ -69,7 +69,7 @@ export function YamlManifest({ icon }: { icon: ReactNode }) {
       </p>
       <pre
         aria-hidden
-        className="text-parchment-100 overflow-x-auto p-5 font-mono text-[0.82rem] leading-7 sm:text-sm"
+        className="overflow-x-auto p-5 font-mono text-[0.82rem] leading-7 text-[#f4ead3] sm:text-sm"
       >
         <code>
           {rendered.map((r, i) => (

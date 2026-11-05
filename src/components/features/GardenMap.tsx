@@ -97,7 +97,7 @@ export default function GardenMap({ active }: { active: string }) {
                         className={cn(
                           'relative grid size-8 place-items-center rounded-full border-2 font-mono text-[0.7rem] font-bold shadow-md transition-transform duration-300 group-hover:scale-110 sm:size-7',
                           here
-                            ? 'border-parchment-50 bg-rose-500 text-white'
+                            ? 'border-parchment-50 text-parchment-50 bg-rose-500'
                             : 'border-parchment-50 bg-moss-800 text-parchment-50',
                         )}
                       >

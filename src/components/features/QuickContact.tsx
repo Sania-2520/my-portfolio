@@ -101,7 +101,7 @@ export function QuickContact() {
         whileHover={{ rotate: -8, scale: 1.06 }}
         whileTap={{ scale: 0.94 }}
         transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-        className="border-parchment-50 bg-moss-800 text-parchment-50 grid size-14 place-items-center rounded-full border-2 shadow-[0_12px_30px_-10px_rgb(47_69_33/0.7)]"
+        className="border-parchment-50 bg-moss-800 text-parchment-50 grid size-14 place-items-center rounded-full border-2 shadow-[0_12px_30px_-10px_var(--btn-shadow)]"
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (

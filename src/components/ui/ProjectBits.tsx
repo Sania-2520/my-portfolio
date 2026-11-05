@@ -5,7 +5,10 @@ import { cn } from '../../lib/cn'
 
 const STATUS: Record<Project['status'], { cls: string; Icon: typeof CircleCheck }> = {
   COMPLETED: { cls: 'border-moss-700/25 bg-moss-100 text-moss-800', Icon: CircleCheck },
-  'IN PROGRESS': { cls: 'border-gold-600/30 bg-gold-300/40 text-[#6b5013]', Icon: Hourglass },
+  'IN PROGRESS': {
+    cls: 'border-gold-600/30 bg-gold-300/40 text-[#6b5013] dark:text-gold-300',
+    Icon: Hourglass,
+  },
   'LIVE AT MANTEXIA': { cls: 'border-rose-500/30 bg-blush-100 text-rose-700', Icon: Radio },
 }
 
@@ -32,7 +35,7 @@ export function LinkChip({ link, project }: { link: ProjectLink; project: string
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-bark-900 text-parchment-50 hover:bg-moss-800 inline-flex min-h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors"
+        className="bg-bark-900 text-parchment-50 hover:bg-moss-800 dark:bg-parchment-200 dark:text-bark-800 dark:hover:bg-moss-800 dark:hover:text-parchment-50 inline-flex min-h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors"
       >
         <Github className="size-4" aria-hidden />
         {link.label}

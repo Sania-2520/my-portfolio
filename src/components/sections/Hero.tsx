@@ -130,7 +130,7 @@ export function Hero() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-[72%] lg:hidden"
           style={{
             background:
-              'radial-gradient(90% 60% at 50% 72%, rgb(255 246 243 / 0.82), rgb(255 246 243 / 0.35) 60%, transparent 85%)',
+              'radial-gradient(90% 60% at 50% 72%, var(--hero-wash-1), var(--hero-wash-2) 60%, transparent 85%)',
           }}
         />
         <div
@@ -146,7 +146,7 @@ export function Hero() {
           className="pointer-events-none absolute top-[8%] right-[-6%] hidden h-[78%] w-[58%] lg:block"
           style={{
             background:
-              'radial-gradient(closest-side, rgb(255 244 240 / 0.78), rgb(255 240 236 / 0.45) 55%, transparent)',
+              'radial-gradient(closest-side, var(--hero-glow-1), var(--hero-glow-2) 55%, transparent)',
           }}
         />
 

@@ -7,8 +7,12 @@ import { GardenSection } from '../ui/GardenSection'
 import { SectionHeading } from '../ui/SectionHeading'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { Leaf } from '../scenes/art/Botanicals'
+import { useTheme } from '../../lib/theme'
 
-const accents = ['#e58fae', '#8f78c4', '#6a8a4a']
+const ACCENTS = {
+  light: ['#e58fae', '#8f78c4', '#6a8a4a'],
+  dark: ['#ff9cc6', '#c6a4f6', '#a9d08a'],
+}
 
 function Fox({ onClick }: { onClick: () => void }) {
   return (
@@ -46,6 +50,7 @@ function Fox({ onClick }: { onClick: () => void }) {
 export function Journal() {
   const meta = sectionById['blogs-section']
   const { openBlog, toast } = useGarden()
+  const accents = ACCENTS[useTheme()]
 
   return (
     <GardenSection id="blogs-section" bg="parchment" vines="left">
@@ -72,7 +77,7 @@ export function Journal() {
                     className="flex flex-1 flex-col p-6 sm:p-7"
                     style={{
                       backgroundImage:
-                        'repeating-linear-gradient(180deg, transparent 0 31px, rgb(231 211 194 / 0.55) 31px 32px)',
+                        'repeating-linear-gradient(180deg, transparent 0 31px, var(--ruled-line) 31px 32px)',
                       backgroundPositionY: '10px',
                     }}
                   >

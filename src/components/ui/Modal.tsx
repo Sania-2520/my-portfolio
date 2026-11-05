@@ -60,7 +60,7 @@ export function Modal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.25, delay: 0.05 } }}
     >
-      <div className="bg-bark-900/40 absolute inset-0 backdrop-blur-[5px]" onClick={onClose} aria-hidden />
+      <div className="bg-scrim absolute inset-0 backdrop-blur-[5px]" onClick={onClose} aria-hidden />
       <m.div
         ref={ref}
         role="dialog"
